@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { login } from "./features/userSlice";
-import { auth } from "./firebase";
+import { login } from "../../features/userSlice";
+import { auth } from "../../firebase";
 import "./Login.css";
 
 function Login() {
@@ -51,6 +51,7 @@ function Login() {
   };
   return (
     <div className="login">
+      <p className="login__disclaimer">To check out the app, enter all fields and press Register Now</p>
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/LinkedIn_Logo.svg/1280px-LinkedIn_Logo.svg.png"
         alt=""

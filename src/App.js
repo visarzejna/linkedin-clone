@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "./features/userSlice";
 import "./App.css";
-import Feed from "./Feed";
-import Header from "./Header";
-import Sidebar from "./Sidebar";
-import Login from "./Login";
-import Widgets from "./Widgets";
+import Feed from "./components/Body/Feed/Feed";
+import Header from "./components/Body/Header/Header";
+import Sidebar from "./components/Body/Sidebar/Sidebar";
+import Login from "./components/Login/Login";
+import Widgets from "./components/Body/Widget/Widgets";
 import { auth } from "./firebase";
 
 function App() {
@@ -31,10 +31,9 @@ function App() {
     return unsubscribe;
   }, [dispatch]);
 
-
   return (
     <div className="app">
-      <Header />
+      {user && <Header />}
       {!user ? (
         <Login />
       ) : (
