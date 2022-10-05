@@ -9,8 +9,10 @@ import EventNoteIcon from "@mui/icons-material/EventNote";
 import CalendarViewDayIcon from "@mui/icons-material/CalendarViewDay";
 import Post from "./Post";
 import firebase from 'firebase/compat/app';
-
+import { useSelector } from "react-redux";
+import { selectUser } from './features/userSlice'
 function Feed() {
+  const user = useSelector(selectUser)
   const [input, setInput] = useState("");
   const [posts, setPosts] = useState([]);
 
@@ -29,10 +31,10 @@ function Feed() {
     e.preventDefault();
 
     db.collection("posts").add({
-      name: "Visar Zejna",
-      description: "Testing the db!",
+      name: user.displayName,
+      description: user.email,
       message: input,
-      photoUrl: '',
+      photoUrl: user.photoURL || '',
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
     setInput("");

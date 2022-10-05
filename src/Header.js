@@ -7,8 +7,18 @@ import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import ChatIcon from '@mui/icons-material/Chat';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import { logout } from './features/userSlice';
+import { auth } from './firebase';
+import { useDispatch } from 'react-redux';
 
 function Header() {
+  const dispatch = useDispatch();
+
+  const logoutOfApp= () => {
+    dispatch(logout())
+    auth.signOut();
+  };
+
   return (
     <div className='header'>
         <div className="header__left">
@@ -24,7 +34,7 @@ function Header() {
             <HeaderOption Icon={BusinessCenterIcon} title='Jobs'/>
             <HeaderOption Icon={ChatIcon} title='Messaging'/>
             <HeaderOption Icon={NotificationsIcon} title='Notifications'/>
-            <HeaderOption avatar='https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png' title='Me'/>
+            <HeaderOption avatar={true} onClick={logoutOfApp} title='Me'/>
         </div>
     </div>
   )
