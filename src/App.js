@@ -6,6 +6,7 @@ import Feed from "./Feed";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Login from "./Login";
+import Widgets from "./Widgets";
 import { auth } from "./firebase";
 
 function App() {
@@ -30,22 +31,6 @@ function App() {
     return unsubscribe;
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   auth.onAuthStateChanged((userAuth) => {
-  //     if (userAuth) {
-  //       dispatch(
-  //         login({
-  //           email: userAuth.user.email,
-  //           uid: userAuth.uid,
-  //           displayName: userAuth.displayName,
-  //           photoURL: userAuth.photoURL,
-  //         })
-  //       );
-  //     } else {
-  //       dispatch(logout());
-  //     }
-  //   });
-  // },[dispatch]);
 
   return (
     <div className="app">
@@ -56,6 +41,7 @@ function App() {
         <div className="app__body">
           <Sidebar />
           <Feed />
+          <Widgets />
         </div>
       )}
     </div>
